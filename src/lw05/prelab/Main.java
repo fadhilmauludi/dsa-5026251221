@@ -18,12 +18,12 @@ public class Main {
         queue.add(start);
         visited.add(start);
         while (!queue.isEmpty()) {
-            int current = queue.poll();                  // take the building at the front of the queue[cite: 1]
+            int current = queue.poll();                  // take the building at the front of the queue
             order.add(current);
             for (int next = 0; next < size; next++) {
-                if (graph[current][next] > 0 && !visited.contains(next)) {                          // next is a neighbour that has not been visited[cite: 1]
+                if (graph[current][next] > 0 && !visited.contains(next)) {                          // next is a neighbour that has not been visited
                     visited.add(next);
-                    queue.add(next);                        // put next at the back of the queue[cite: 1]
+                    queue.add(next);                        // put next at the back of the queue
                 }
             }
         }
@@ -34,11 +34,11 @@ public class Main {
     static List<Integer> dfsOrder = new ArrayList<>();  // shared by every recursive call of dfs()
 
     static void dfs(int current) {
-        dfsVisited.add(current);                                    // mark current as visited[cite: 1]
+        dfsVisited.add(current);                                    // mark current as visited
         dfsOrder.add(current);
         for (int next = 0; next < size; next++) {
             if (graph[current][next] > 0 && !dfsVisited.contains(next)) {
-                dfs(next);                            // go deeper from next[cite: 1]
+                dfs(next);                            // go deeper from next
             }
         }
     }
@@ -53,12 +53,12 @@ public class Main {
         int[] prev = new int[size];
         for (int i = 0; i < size; i++) {
             int current = findTheNextNode(visited, dist);
-            visited[current] = true;                                // mark current as visited[cite: 1]
+            visited[current] = true;                                // mark current as visited
             for (int next = 0; next < size; next++) {
                 int newDist = dist[current] + graph[current][next];
-                if (graph[current][next] > 0 && !visited[next] && newDist < dist[next]) {   // the new distance is shorter[cite: 1]
+                if (graph[current][next] > 0 && !visited[next] && newDist < dist[next]) {   // the new distance is shorter
                     dist[next] = newDist;
-                    prev[next] = current;                        // remember that next is reached from current[cite: 1]
+                    prev[next] = current;                        // remember that next is reached from current
                 }
             }
         }
@@ -77,7 +77,7 @@ public class Main {
         int min = Integer.MAX_VALUE;
         int closest = -1;
         for (int i = 0; i < size; i++) {
-            if (!visited[i] && dist[i] < min) {                          // i is unvisited and closer than min[cite: 1]
+            if (!visited[i] && dist[i] < min) {                          // i is unvisited and closer than min
                 min = dist[i];
                 closest = i;
             }
@@ -90,7 +90,7 @@ public class Main {
         if (current == start) {
             System.out.print(names[current]);
         } else {
-            route(prev[current], start, prev);                                // print the route up to the previous building[cite: 1]
+            route(prev[current], start, prev);                                // print the route up to the previous building
             System.out.print(" -> " + names[current]);
         }
     }
