@@ -107,7 +107,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(Main.class.getResourceAsStream("/campus.txt"));
+        Scanner scanner = new Scanner(Main.class.getResourceAsStream("campus.txt"));
         
         size = scanner.nextInt();
         names = new String[size];
